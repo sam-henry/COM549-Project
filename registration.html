@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <title>UUnch Registration Form</title>
+  </head>
+  <body>
+    <h1>UUnch Registration Form</h1>
+	<form action="registration.php" method="post">
+	
+    <table style="border: 0px;">
+    
+	<datalist id = "avatar">
+		<option value ="angel">
+		<option value ="mouse">
+		<option value ="nurse">
+		<option value ="penguin">
+		<option value ="pirate">
+		<option value ="propeller">
+		<option value ="warrior">
+		</datalist>
+    <tr>
+      <td>Firstname</td>
+      <td><input type="text" name="firstname" size="50" maxlength="50" /></td>
+    </tr>
+	<tr>
+      <td>Surname</td>
+      <td><input type="text" name="surname" size="50" maxlength="50" /></td>
+    </tr>
+	<tr>
+      <td>Email</td>
+      <td><input type="text" name="email" size="50" maxlength="50" /></td>
+    </tr>
+	<tr>
+      <td>Password</td>
+      <td><input type="password" name="password" size="50" maxlength="40" /></td>
+    </tr>
+	<tr>
+      <td>Confirm Password</td>
+      <td><input type="password" name="confirmpw" size="50" maxlength="50" /></td>
+    </tr>
+	<tr>
+      <td>Date of Birth</td>
+      <td><input type="date" name="dob" size="50" maxlength="50" /></td>
+    </tr>
+    <tr>
+     <td>Avatar</td>
+     <td><input list="avatar" name="avatar" size="11" maxlength="11" /></td>
+    </tr>
+    <tr>
+     <td colspan="2" style="text-align: center;"><input type="submit" value="Register" /></td>
+    </tr>
+    </table>
+    </form>
+  </body>
+</html>
