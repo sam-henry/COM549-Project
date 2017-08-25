@@ -31,37 +31,37 @@ include db_fns.php;
 						'propeller',
 						'warrior');
 	$db = db_connect()
-	//Validation
+	// Validation
 	try {
-	//confirm there are no numbers in the firstname 
+	// confirm there are no numbers in the firstname 
 	if (preg_match("/[0-9]+/", $firstname)){
 		throw new Exception('Firstname cannot contain numbers');
 	}
-	//Confirm there are no numbers in the surname
+	// Confirm there are no numbers in the surname
 	if (preg_match("/[0-9]+/", $surname)) {
 		throw new Exception('Surname cannot contain numbers');
 	}
-	//Confirm email address is in the correct format
+	// Confirm email address is in the correct format
 	if (!preg_match('/^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/', $email)){
 		throw new Exception('Not a valid email adderess');
 	} 
-	//Confirm the passwords match
+	// Confirm the passwords match
 	if ($password !== $confirmPw){
 		throw new Exception('Passwords do not match'); 
 	}
-	//Confirm valid User Type is selected
+	// Confirm valid User Type is selected
 	if (!array_key_exists("$avatar",$avatarId)){
 		throw new Exception('Please select valid Avatar');
 	}
 		
-	//Test DB connection for errors 	
+	// Test DB connection for errors 	
 	if (mysqli_connect_errno()) 
 	{
 		echo "<p>Could not connect to database</p>";
 	}
 	else
 	{
-		//Prepare and run query to check if user already exists in the DB
+		// Prepare and run query to check if user already exists in the DB
 		$query = "SELECT * FROM Users WHERE Username = '$email'";
 	
 		$stmt = $db->prepare($query);
@@ -71,33 +71,33 @@ include db_fns.php;
 		
 	}	
 		
-	//check if the query found the user in the DB 
+	// check if the query found the user in the DB 
 	if ($stmt->num_rows > 0){
 		throw new Exception('User already exists');
 	}
-	//Hash the password to be entered into the DB	
+	// Hash the password to be entered into the DB	
 	$password = sha1($password);
-	//Prepare and run query to insert user details into the Users table in the DB 
-	//Note the userTypeId corresponding to the userType is inputed into the DB
+	// Prepare and run query to insert user details into the Users table in the DB 
+	// Note the userTypeId corresponding to the userType is inputed into the DB
 	$query = "INSERT INTO Users (Firstname, Surname, Username, Password, DateRegistered, UserType)
 		VALUES (?, ?, ?, ?, now(), ?)";
 	$stmt = $db->prepare($query);
 	$stmt->bind_param('ssssi', $firstname, $surname, $email, $password, $userTypeId[$userType]);
 	$stmt->execute();
-	//Check if there is an error inserting the user into the DB
+	// Check if there is an error inserting the user into the DB
 	if (!$stmt){
 		throw new Exception('Failed to write to the database, Please try again?');
 	}
-	//If entered successfully output to the user and display Form for next user
+	// If entered successfully output to the user and display Form for next user
 	echo "User registered successfully";
 	include('registration.html');
 	
 	
 	}//try block
 	
-	//Catch block to catch any errors in Validation
+	// Catch block to catch any errors in Validation
 	catch (Exception $e){
-		//Output error message and the input form
+		// Output error message and the input form
 		echo $e->getMessage();
 		include('registration.html');
 	}
