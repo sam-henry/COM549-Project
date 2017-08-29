@@ -1,7 +1,7 @@
 <?php
 
 function db_connect() {
-   $result = new mysqli('localhost', 'root', '', 'book_sc');
+   $result = new mysqli('localhost', 'root', '', 'uunch');
    if (!$result) {
       return false;
    }

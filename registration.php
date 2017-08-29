@@ -1,6 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <title>UUnch Registration Form</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet" media="screen"/>
+  </head>
+  <body>
 <?php
-include db_fns.php;
-
+include ('db_fns.php');
+try {
 	//Validate the form is filed in 
 	if ((empty($_POST["firstname"]))
 	|| (empty($_POST["surname"]))
@@ -10,9 +19,7 @@ include db_fns.php;
 	|| (empty($_POST["dob"]))
 	|| (empty($_POST["avatar"]))){
 		//If not display error message and input form
-		echo "<p>Please complete all fields</p>";
-		include('registration.html');
-		exit;
+		throw new Exception("Please complete all fields");	
 	}
 	//Read in the values from the form and store the in variables		
 	$firstname = $_POST['firstname']; 
@@ -23,16 +30,16 @@ include db_fns.php;
 	$dob = $_POST['dob'];
 	$avatar = $_POST['avatar'];
 	//Create an array to map the user type to numerical value for the DB
-	$avatarId = array(	'angel',
-						'mouse',
-						'nurse',
-						'penguin',
-						'pirate',
-						'propeller',
-						'warrior');
-	$db = db_connect()
+	$avatarId = array(	'angel'=>1,
+						'mouse'=>2,
+						'nurse'=>3,
+						'penguin'=>4,
+						'pirate'=>5,
+						'propeller'=>6,
+						'warrior'=>7);
+	$db = db_connect();
 	// Validation
-	try {
+	
 	// confirm there are no numbers in the firstname 
 	if (preg_match("/[0-9]+/", $firstname)){
 		throw new Exception('Firstname cannot contain numbers');
@@ -62,34 +69,31 @@ include db_fns.php;
 	else
 	{
 		// Prepare and run query to check if user already exists in the DB
-		$query = "SELECT * FROM Users WHERE Username = '$email'";
-	
-		$stmt = $db->prepare($query);
-		$stmt->execute();
-		$stmt->store_result();
-		$stmt->bind_result($fName, $sName,$uName,$pWord,$ema,$dateReg,$userTyp);
-		
+		$query = "SELECT * FROM uunch_users WHERE email = '$email'";
+
+		$stmt = @$db->query($query);
+
 	}	
 		
 	// check if the query found the user in the DB 
-	if ($stmt->num_rows > 0){
+	if (@$stmt->num_rows > 0){
 		throw new Exception('User already exists');
 	}
 	// Hash the password to be entered into the DB	
 	$password = sha1($password);
 	// Prepare and run query to insert user details into the Users table in the DB 
-	// Note the userTypeId corresponding to the userType is inputed into the DB
-	$query = "INSERT INTO Users (Firstname, Surname, Username, Password, DateRegistered, UserType)
-		VALUES (?, ?, ?, ?, now(), ?)";
-	$stmt = $db->prepare($query);
-	$stmt->bind_param('ssssi', $firstname, $surname, $email, $password, $userTypeId[$userType]);
-	$stmt->execute();
+	// Note the avatarId corresponding to the avatar is inputed into the DB
+	$query = "INSERT INTO uunch_users (firstname, surname, email, password, avatar, datereg, dob)
+		VALUES ('$firstname', '$surname', '$email', '$password', '$avatarId[$avatar]', now(),'$dob')";
+		
+	$stmt = $db->query($query);
 	// Check if there is an error inserting the user into the DB
 	if (!$stmt){
 		throw new Exception('Failed to write to the database, Please try again?');
 	}
 	// If entered successfully output to the user and display Form for next user
-	echo "User registered successfully";
+	echo "<div class = 'alert alert-success'>User registered successfully</div>";
+	
 	include('registration.html');
 	
 	
@@ -98,8 +102,10 @@ include db_fns.php;
 	// Catch block to catch any errors in Validation
 	catch (Exception $e){
 		// Output error message and the input form
-		echo $e->getMessage();
+	echo "<div class = 'alert alert-danger'>".$e->getMessage()."</div>";
+
 		include('registration.html');
 	}
-	
-?>
+	?>
+	</body>
+	</html>
