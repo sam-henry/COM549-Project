@@ -29,14 +29,7 @@ try {
 	$confirmPw = $_POST['confirmpw'];
 	$dob = $_POST['dob'];
 	$avatar = $_POST['avatar'];
-	//Create an array to map the user type to numerical value for the DB
-	$avatarId = array(	'angel'=>1,
-						'mouse'=>2,
-						'nurse'=>3,
-						'penguin'=>4,
-						'pirate'=>5,
-						'propeller'=>6,
-						'warrior'=>7);
+	
 	$db = db_connect();
 	// Validation
 	
@@ -56,10 +49,8 @@ try {
 	if ($password !== $confirmPw){
 		throw new Exception('Passwords do not match'); 
 	}
-	// Confirm valid User Type is selected
-	if (!array_key_exists("$avatar",$avatarId)){
-		throw new Exception('Please select valid Avatar');
-	}
+	
+	
 		
 	// Test DB connection for errors 	
 	if (mysqli_connect_errno()) 
@@ -84,7 +75,7 @@ try {
 	// Prepare and run query to insert user details into the Users table in the DB 
 	// Note the avatarId corresponding to the avatar is inputed into the DB
 	$query = "INSERT INTO uunch_users (firstname, surname, email, password, avatar, datereg, dob)
-		VALUES ('$firstname', '$surname', '$email', '$password', '$avatarId[$avatar]', now(),'$dob')";
+		VALUES ('$firstname', '$surname', '$email', '$password', '$avatar', now(),'$dob')";
 		
 	$stmt = $db->query($query);
 	// Check if there is an error inserting the user into the DB
