@@ -1,6 +1,7 @@
 
 
 <?php
+session_start();
 include ('db_fns.php');
 try {
 	//Validate the form is filed in 
@@ -76,7 +77,15 @@ try {
 		throw new Exception('Failed to write to the database, Please try again?');
 	}
 	// If entered successfully output to the user and display Form for next user
-	include ('html_header_and_navbar.php');
+	
+	if(!empty($_SESSION) && isset($_SESSION['usertype'])){
+	if ($_SESSION['usertype'] == '3'){
+		include('admin_html_header_and_navbar.php');
+	}
+	}
+	else{
+		include('html_header_and_navbar.php');
+	}
 	echo "<div class = 'alert alert-success'>User registered successfully</div>";
 	
 	include('html_registration_form.php');
@@ -86,7 +95,15 @@ try {
 	
 	// Catch block to catch any errors in Validation
 	catch (Exception $e){
-		include('html_header_and_navbar.php');
+		
+		if(!empty($_SESSION) && isset($_SESSION['usertype'])){
+		if ($_SESSION['usertype'] == '3'){
+			include('admin_html_header_and_navbar.php');
+		}
+		}
+		else{
+			include('html_header_and_navbar.php');
+		}
 		// Output error message and the input form
 		echo "<div class = 'alert alert-danger'>".$e->getMessage()."</div>";
 

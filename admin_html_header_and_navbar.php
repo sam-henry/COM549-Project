@@ -18,10 +18,12 @@
     </div>
     <ul class="nav navbar-nav">
       <li><a href="#">User Forum</a></li>
+	  <li><a href="admin_add_review_form.php">Add Article</a></li>
+	  <li><a href="admin_user_management.php">User Management</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="registration_form.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="login_form.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      
+      <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
   </div>
 </nav> 

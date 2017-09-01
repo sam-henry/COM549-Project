@@ -57,15 +57,24 @@
 	$_SESSION["username"] = $username;
 	$_SESSION["loggedIn"] = true;
 	$_SESSION["userid"] = $row['userid'];
-	//redirect to landing page
-	header('Location: landing.php');
+	$_SESSION["usertype"] = $row['usertype'];
+	//redirect to previous page
+	header("Location: ".$_SESSION['prevpage']."");
 	
 	
 	}
 	//Catch block tp catch errors. 
 	catch (Exception $e){
 		//out put error message and the input form
-		include('html_header_and_navbar.php');
+		
+		if(!empty($_SESSION) && isset($_SESSION['usertype'])){
+		if ($_SESSION['usertype'] == '3'){
+			include('admin_html_header_and_navbar.php');
+		}
+		}
+		else{
+			include('html_header_and_navbar.php');
+		}
 		echo "<div class = 'alert alert-danger'>".$e->getMessage()."</div>";
 		
 		include('html_login_form.php');

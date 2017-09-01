@@ -44,25 +44,25 @@
 	
 	<div class="form-group">
 		<label class = "control-label col-md-2">Avatar</label>
-		<input type="radio" name = "avatar" value = "images\angel.png" checked><span>
+		<input type="radio" name = "avatar" value = "images\\angel.png" checked><span>
 			<img src = "images\angel.png" height='42' width='42' class = "img-rounded">
 		</span>
 		<input type="radio" name = "avatar" value = "images\mouse.png"><span>
 			<img src = "images\mouse.png" height='42' width='42' class = "img-rounded">
 		</span>
-		<input type="radio" name = "avatar" value = "images\nurse.png"><span>
+		<input type="radio" name = "avatar" value = "images\\nurse.png"><span>
 			<img src = "images\nurse.png" height='42' width='42' class = "img-rounded">
 		</span>
-		<input type="radio" name = "avatar" value = "images\penguin.png"><span>
+		<input type="radio" name = "avatar" value = "images\\penguin.png"><span>
 			<img src = "images\penguin.png" height='42' width='42' class = "img-rounded">
 		</span>
-		<input type="radio" name = "avatar" value = "images\pirate.png"><span>
+		<input type="radio" name = "avatar" value = "images\\pirate.png"><span>
 			<img src = "images\pirate.png" height='42' width='42' class = "img-rounded" >
 		</span>
-		<input type="radio" name = "avatar" value = "images\propeller.png"><span>
+		<input type="radio" name = "avatar" value = "images\\propeller.png"><span>
 			<img src = "images\propeller.png" height='42' width='42' class = "img-rounded">
 		</span>
-		<input type="radio" name = "avatar" value = "images\warrior.png"><span>
+		<input type="radio" name = "avatar" value = "images\\warrior.png"><span>
 			<img src = "images\warrior.png" height='42' width='42' class = "img-rounded">
 		</span>
 	</div>

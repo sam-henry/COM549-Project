@@ -8,7 +8,6 @@ session_start();
 	else{
 		include('html_header_and_navbar.php');
 	}
-include ('html_registration_form.php');
-include ('html_footer.php');
-
-?>
+	include ('html_add_review_form.php');
+	include ('html_footer.php');
+	?>

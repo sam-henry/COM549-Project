@@ -6,7 +6,7 @@
  date_default_timezone_set('UTC');
  include ('db_fns.php');
  
- 
+ if(!empty($_SESSION) && isset($_SESSION['loggedIn'])){
  if ($_SESSION["loggedIn"]){
 	 if(empty($_POST["comment"])){
 		header("Location: review.php?id=".$_SESSION['reviewid'].""); 
@@ -18,21 +18,16 @@
 		$query = "INSERT INTO uunch_comments (userid, reviewid, comment) 
 			VALUES ('".$_SESSION['userid']."', '".$_SESSION['reviewid']."', '$comment')";
 		$result = $db->query($query);
-		
-		echo $_SESSION['userid'];
-		echo $_SESSION['reviewid'];
-		echo $comment;
-		
+				
 		if($result){
-			header("location: review.php?id=".$_SESSION['reviewid']."");
-		}
-		else{
-			echo "Did not wirte to the DB";
+			header("location: ".$_SESSION['prevpage']."");
 		}
 	 }
+ }
  }
  else{
 	 //If not logged in redirect to the first logon screen
 	header('Location: login_form.php');
  }
+ 
 ?>

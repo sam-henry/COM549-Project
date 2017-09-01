@@ -1,1 +1,22 @@
- 
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 100px;
+}
+footer, .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 100px;
+  color: white;
+  background-color: black;
+}
+.row {
+	padding-bottom: 50px;
+	
+}
+

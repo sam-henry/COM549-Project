@@ -4,8 +4,16 @@ session_start();
 	$id = $_GET['id'];
 	include ('db_fns.php');
 $_SESSION['reviewid'] = "$id";
+$_SESSION['prevpage'] = "review.php?id=$id";
 
-include('html_header_and_navbar.php');
+	if(!empty($_SESSION) && isset($_SESSION['usertype'])){
+	if ($_SESSION['usertype'] == '3'){
+		include('admin_html_header_and_navbar.php');
+	}
+	}
+	else{
+		include('html_header_and_navbar.php');
+	}
 
 	$db = db_connect();
 	$query = "SELECT * FROM uunch_reviews WHERE reviewid = '$id'";
@@ -59,6 +67,7 @@ include('html_header_and_navbar.php');
 		</div>
 	</div>
 	";
+	
 	//Comments
 	
 	echo "<div class =\"row\">
@@ -79,7 +88,9 @@ include('html_header_and_navbar.php');
 	$commentuser = $userresult->fetch_assoc();
 
 	
-	echo "<div class = \"media\">
+	echo "<div class =\"row\">
+	<div class = \"col-md-offset-1 col-md-9\">
+	<div class = \"media\">
 				<div class = \"media-left media-middle\">
 					<img class = \"media-object img-rounded\" src = \"".$commentuser['avatar']."\" height='40' width='40'>
 				</div>
@@ -90,11 +101,14 @@ include('html_header_and_navbar.php');
 				<div class = \"media\">".$comment['comment'] ."
 				</div>
 			</div>
-		</div></br>";
+		</div>
+		</div>
+		</div>";
 }
 	}
 		
-	echo "
+	echo "<div class =\"row\">
+	<div class = \" col-md-10\">
 	<form class = \"form-horizontal\"  action=\"comment.php\" method=\"post\">
 	<fieldset>
 	<div class=\"form-group\">
@@ -111,6 +125,8 @@ include('html_header_and_navbar.php');
 	</div>
 	</fieldset>
     </form>
+	</div>
+	</div>
 	</div>
 	";
 	

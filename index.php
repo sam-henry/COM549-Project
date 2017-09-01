@@ -3,9 +3,7 @@
 session_start();
  ob_start();
 include ('db_fns.php');
-$_SESSION["loggedIn"] = true;
-$_SESSION["username"] = "Sam";
-$_SESSION["userid"] = 3;
+
 
 
 if (!empty($_POST['vote'])){
@@ -14,8 +12,14 @@ $db = db_connect();
 	$query = "UPDATE uunch_poll SET foodscore = foodscore + 1 WHERE foodid = '$vote'";
 	$result = $db->query($query);
 }
-
-	include('html_header_and_navbar.php');
+	if(!empty($_SESSION) && isset($_SESSION['usertype'])){
+	if ($_SESSION['usertype'] == '3'){
+		include('admin_html_header_and_navbar.php');
+	}
+	}
+	else{
+		include('html_header_and_navbar.php');
+	}
 
 ?>
 
