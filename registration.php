@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-   <title>UUnch Registration Form</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet" media="screen"/>
-  </head>
-  <body>
+
+
 <?php
 include ('db_fns.php');
 try {
@@ -55,7 +48,7 @@ try {
 	// Test DB connection for errors 	
 	if (mysqli_connect_errno()) 
 	{
-		echo "<p>Could not connect to database</p>";
+		throw new Exception('Could not connect to database');
 	}
 	else
 	{
@@ -83,20 +76,21 @@ try {
 		throw new Exception('Failed to write to the database, Please try again?');
 	}
 	// If entered successfully output to the user and display Form for next user
+	include ('html_header_and_navbar.php');
 	echo "<div class = 'alert alert-success'>User registered successfully</div>";
 	
-	include('registration.html');
-	
+	include('html_registration_form.php');
+	include('html_footer.php');
 	
 	}//try block
 	
 	// Catch block to catch any errors in Validation
 	catch (Exception $e){
+		include('html_header_and_navbar.php');
 		// Output error message and the input form
-	echo "<div class = 'alert alert-danger'>".$e->getMessage()."</div>";
+		echo "<div class = 'alert alert-danger'>".$e->getMessage()."</div>";
 
-		include('registration.html');
+		include('html_registration_form.php');
+		include('html_footer.php');
 	}
 	?>
-	</body>
-	</html>

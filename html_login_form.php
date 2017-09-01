@@ -1,16 +1,4 @@
- <!DOCTYPE html>
-<html>
-  <head>
-   <title>Login Form</title>
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet" media="screen"/>
-  </head>
-  
-  <body>
-      <h1>UUnch</h1>
-	
-	
+
 	<div class = "container-fluid">
 	<div class = "row">
 	<div class = "col-md-9">
@@ -21,13 +9,13 @@
 		
 			<div class="form-group">
 		 <label class = "control-label col-md-2" for="userInfo_username">Username</label>
-		 <div class="col-md-10">
+		 <div class="col-md-6">
 			<input class="form-control" id="userInfo_username" type="text" name="username"/>
 		</div>
 	</div>
 	<div class="form-group">
 		 <label class = "control-label col-md-2" for = "userInfo_pwd">Password</label>
-		 <div class="col-md-10">
+		 <div class="col-md-6">
 			<input class="form-control" id = "userInfo_pwd" type="password" name="password"/>
 		</div>
 	</div>
@@ -42,5 +30,3 @@
 	</div>
 	</div>
 	</div>
-  </body>
-</html>

@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-   <title>UUnch Registration Form</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet" media="screen"/>
-  </head>
-  <body>
-    <h1>UUnch</h1>
-	
-	
-	<div class = "container-fluid">
+<div class = "container-fluid">
 	<div class = "row">
 	<div class = "col-md-9">
 	<h1>Registration Form</h1>
@@ -19,37 +7,37 @@
 	
 	<div class="form-group">
 		 <label class = "control-label col-md-2" for="userInfo_fname" >Firstname</label>
-		 <div class="col-md-10">
+		 <div class="col-md-6">
 			<input class="form-control" id = "userInfo_fname" type="text" name="firstname"/>
 		</div>
 	</div>
 	<div class="form-group">
 		 <label class = "control-label col-md-2" for="userInfo_fsname">Surname</label>
-		 <div class="col-md-10">
+		 <div class="col-md-6">
 			<input class="form-control" id = "userInfo_sname" type="text" name="surname"/>
 		</div>
 	</div>
 	<div class="form-group">
 		 <label class = "control-label col-md-2" for="userInfo_email">Email</label>
-		 <div class="col-md-10">
+		 <div class="col-md-6">
 			<input class="form-control" id="userInfo_email" type="text" name="email"/>
 		</div>
 	</div>
 	<div class="form-group">
 		 <label class = "control-label col-md-2" for = "userInfo_pwd">Password</label>
-		 <div class="col-md-10">
+		 <div class="col-md-6">
 			<input class="form-control" id = "userInfo_pwd" type="password" name="password"/>
 		</div>
 	</div>
 	<div class="form-group">
 		 <label class = "control-label col-md-2" for = "userInfo_cPwd">Confirm Password</label>
-		 <div class="col-md-10">
+		 <div class="col-md-6">
 			<input class="form-control" id = "userInfo_cPwd" type="password" name="confirmpw"/>
 		</div>
 	</div>
 	<div class="form-group">
 		 <label class = "control-label col-md-2" for = "userInfo_dob">Date of Birth</label>
-		 <div class="col-md-10">
+		 <div class="col-md-6">
 			<input class="form-control" id="userInfo_dob" type="date" name="dob"/>
 		</div>
 	</div>
@@ -89,5 +77,3 @@
 	</div>
 	</div>
 	</div>
-  </body>
-</html>

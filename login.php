@@ -56,6 +56,7 @@
 	//If user exists and the passowrd matches. Then set session variables to logged in.
 	$_SESSION["username"] = $username;
 	$_SESSION["loggedIn"] = true;
+	$_SESSION["userid"] = $row['userid'];
 	//redirect to landing page
 	header('Location: landing.php');
 	
@@ -64,7 +65,10 @@
 	//Catch block tp catch errors. 
 	catch (Exception $e){
 		//out put error message and the input form
-		echo $e->getMessage();
-		include('login_form.html');
+		include('html_header_and_navbar.php');
+		echo "<div class = 'alert alert-danger'>".$e->getMessage()."</div>";
+		
+		include('html_login_form.php');
+		include ('html_footer.php');
 	}
 ?>

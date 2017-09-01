@@ -1,29 +1,24 @@
 
 <?php
+session_start();
+ ob_start();
 include ('db_fns.php');
+$_SESSION["loggedIn"] = true;
+$_SESSION["username"] = "Sam";
+$_SESSION["userid"] = 3;
+
 
 if (!empty($_POST['vote'])){
 $vote = $_POST['vote'];
 $db = db_connect();
 	$query = "UPDATE uunch_poll SET foodscore = foodscore + 1 WHERE foodid = '$vote'";
 	$result = $db->query($query);
-}	
+}
+
+	include('html_header_and_navbar.php');
 
 ?>
 
-
-<!DOCTYPE html>
-<html>
-  <head>
-   <title>UUnch</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet" media="screen"/>
-	
-  </head>
-  <body>
-    <h1>UUnch</h1>
-	
 	
 	<div class = "container-fluid">
 	<div class = "row">
@@ -112,5 +107,6 @@ echo "<div class = \"media\">
 	</div>
 	</div>
 	</div>
-  </body>
-</html>
+<?php
+	include('html_footer.php');
+?>

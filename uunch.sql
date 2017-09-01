@@ -15,7 +15,7 @@ CREATE TABLE `uunch_users` (
   `email` varchar(50) NOT NULL,
   `password` char(40) NOT NULL,
   `usertype` int(1) UNSIGNED NOT NULL DEFAULT '1',
-  `avatar` int(2) NOT NULL,
+  `avatar` varchar(50) NOT NULL,
   `datereg` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `dob` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -48,5 +48,21 @@ CREATE TABLE `uunch_poll` (
   `foodscore` int(20) NOT NULL,
   `reviewid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+---------------------------------------------------
+
+--
+-- Table structure for table `uunch_comments`
+--
+
+CREATE TABLE `uunch_comments` (
+  `commentid` int(10) UNSIGNED NOT NULL,
+  `userid` int(11) NOT NULL,
+  `reviewid` int(11) NOT NULL,
+  `comment` text NOT NULL,
+  `commentdatereg` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 -- --------------------------------------------------------
