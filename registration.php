@@ -100,6 +100,9 @@ try {
 		if ($_SESSION['usertype'] == '3'){
 			include('admin_html_header_and_navbar.php');
 		}
+		else{
+			include('html_header_and_navbar.php');
+		}
 		}
 		else{
 			include('html_header_and_navbar.php');

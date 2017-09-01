@@ -13,13 +13,16 @@ $db = db_connect();
 	$result = $db->query($query);
 }
 	if(!empty($_SESSION) && isset($_SESSION['usertype'])){
-	if ($_SESSION['usertype'] == '3'){
-		include('admin_html_header_and_navbar.php');
-	}
-	}
-	else{
-		include('html_header_and_navbar.php');
-	}
+		if ($_SESSION['usertype'] == '3'){
+			include('admin_html_header_and_navbar.php');
+		}
+		else{
+			include('html_header_and_navbar.php');
+		}
+		}
+		else{
+			include('html_header_and_navbar.php');
+		}
 
 ?>
 
@@ -113,4 +116,5 @@ echo "<div class = \"media\">
 	</div>
 <?php
 	include('html_footer.php');
+	$_SESSION['prevpage'] = "index.php";
 ?>

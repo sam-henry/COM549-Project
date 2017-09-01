@@ -59,7 +59,13 @@
 	$_SESSION["userid"] = $row['userid'];
 	$_SESSION["usertype"] = $row['usertype'];
 	//redirect to previous page
+	if (isset($_SESSION['prevpage'])){
+		
 	header("Location: ".$_SESSION['prevpage']."");
+	}
+	else{
+		header("Location: index.php");
+	}
 	
 	
 	}
@@ -70,6 +76,9 @@
 		if(!empty($_SESSION) && isset($_SESSION['usertype'])){
 		if ($_SESSION['usertype'] == '3'){
 			include('admin_html_header_and_navbar.php');
+		}
+		else{
+			include('html_header_and_navbar.php');
 		}
 		}
 		else{

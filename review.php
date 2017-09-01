@@ -7,13 +7,16 @@ $_SESSION['reviewid'] = "$id";
 $_SESSION['prevpage'] = "review.php?id=$id";
 
 	if(!empty($_SESSION) && isset($_SESSION['usertype'])){
-	if ($_SESSION['usertype'] == '3'){
-		include('admin_html_header_and_navbar.php');
-	}
-	}
-	else{
-		include('html_header_and_navbar.php');
-	}
+		if ($_SESSION['usertype'] == '3'){
+			include('admin_html_header_and_navbar.php');
+		}
+		else{
+			include('html_header_and_navbar.php');
+		}
+		}
+		else{
+			include('html_header_and_navbar.php');
+		}
 
 	$db = db_connect();
 	$query = "SELECT * FROM uunch_reviews WHERE reviewid = '$id'";

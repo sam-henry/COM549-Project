@@ -47,7 +47,7 @@
 		<input type="radio" name = "avatar" value = "images\\angel.png" checked><span>
 			<img src = "images\angel.png" height='42' width='42' class = "img-rounded">
 		</span>
-		<input type="radio" name = "avatar" value = "images\mouse.png"><span>
+		<input type="radio" name = "avatar" value = "images\\mouse.png"><span>
 			<img src = "images\mouse.png" height='42' width='42' class = "img-rounded">
 		</span>
 		<input type="radio" name = "avatar" value = "images\\nurse.png"><span>
